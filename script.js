@@ -1,7 +1,6 @@
 // Creative Brain - Centralized Configuration
 const socialLinks = {
-    whatsapp: "https://wa.me/201552662000",
-    tiktok: "https://www.tiktok.com/@creativebrain"
+    facebook: "https://www.facebook.com/profile.php?id=100094123874176&mibextid=ZbWKwL"
 };
 
 // Creative Brain - Script for Theme & Password Visibility Toggle
@@ -36,14 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Social Links Configuration
-    const whatsappLink = document.getElementById('whatsapp-link');
-    const tiktokLink = document.getElementById('tiktok-link');
+    const facebookLink = document.getElementById('facebook-link');
     
-    if (whatsappLink && socialLinks.whatsapp) {
-        whatsappLink.href = socialLinks.whatsapp;
-    }
-    if (tiktokLink && socialLinks.tiktok) {
-        tiktokLink.href = socialLinks.tiktok;
+    if (facebookLink && socialLinks.facebook) {
+        facebookLink.href = socialLinks.facebook;
     }
 
     // Password Visibility Logic
