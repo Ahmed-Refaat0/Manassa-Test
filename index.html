@@ -2,15 +2,14 @@
 <html dir="rtl" lang="ar"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creative-Brain</title>
+<title>Creative Brain</title>
 <link rel="icon" type="image/png" href="imgs/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="script.js"></script>
 <link rel="stylesheet" href="css/all.css">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
-    // Inline script to prevent FOUC (Flash of Unstyled Content)
+    // Prevent FOUC (Flash of Unstyled Content)
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     } else {
@@ -120,84 +119,256 @@
         h1, h2, h3, h4, h5, h6, .display-font {
             font-family: 'Be Vietnam Pro', sans-serif;
         }
-        /* Remove spin buttons from number inputs */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
     </style>
 </head>
-<body class="bg-background dark:bg-[#020b13] min-h-screen flex items-center justify-center p-0 md:p-margin-desktop antialiased text-on-surface dark:text-slate-100 transition-colors duration-300">
-<!-- Main Container: Split Screen Layout -->
-<div class="flex flex-col md:flex-row w-full h-screen md:h-auto max-w-container-max bg-surface-container-lowest dark:bg-[#051525] md:rounded-xl md:shadow-lg dark:md:shadow-none overflow-hidden md:min-h-[700px] border border-transparent dark:border-slate-800 transition-all duration-300">
-<!-- Right Side: Login Form (RTL - this is physically on the right visually when dir="rtl") -->
-<div class="w-full md:w-1/2 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-stack-lg z-10 bg-surface-container-lowest dark:bg-[#051525] transition-colors duration-300">
-<div class="max-w-md mx-auto w-full flex flex-col h-full justify-center">
-<!-- Logo & Header -->
-<div class="mb-stack-lg text-center md:text-right">
-<div class="flex items-center justify-between gap-2 mb-stack-sm text-primary dark:text-sky-400">
-<div class="flex items-center gap-2">
-<i class="fa-solid fa-brain text-[32px]"></i>
-<span class="font-headline-md text-headline-md font-bold tracking-tight">Creative Brain</span>
-</div>
-<button id="theme-toggle" class="p-2 rounded-full border border-outline-variant hover:bg-surface-container text-on-surface dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
-<span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
-</button>
-</div>
-<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface dark:text-white mt-stack-md mb-2">
-                        تسجيل الدخول
-                    </h1>
-<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400">
-                        أدخل بياناتك للوصول إلى دروسك
+<body class="bg-background dark:bg-[#020b13] min-h-screen flex flex-col antialiased text-on-surface dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+
+<!-- ======== HEADER ======== -->
+<header class="sticky top-0 z-50 w-full bg-surface-container-lowest/95 dark:bg-[#051525]/95 backdrop-blur-md border-b border-outline-variant dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-container-max mx-auto flex items-center justify-between h-16 px-margin-mobile md:px-margin-desktop">
+        <!-- Logo -->
+        <a href="welcome-page.html" class="flex items-center gap-2 text-primary dark:text-sky-400">
+            <i class="fa-solid fa-brain text-[28px] md:text-[32px]"></i>
+            <span class="font-headline-md text-[20px] md:text-headline-md font-bold tracking-tight">Creative Brain</span>
+        </a>
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+            <button id="theme-toggle" class="p-2 rounded-full border border-outline-variant hover:bg-surface-container text-on-surface dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
+                <span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+            </button>
+            <a href="login-page.html" class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-label-md text-label-md px-5 py-2.5 rounded-lg flex items-center gap-2 hover:-translate-y-px transition-all duration-200">
+                <span>تسجيل الدخول</span>
+                <span class="material-symbols-outlined text-[18px]">login</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ======== HERO SECTION ======== -->
+<section class="relative w-full overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="imgs/background.jpg.jpeg" alt="Creative Brain Background" class="w-full h-full object-cover object-center dark:brightness-[0.4] brightness-[0.25] transition-all duration-300">
+    </div>
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background dark:to-[#020b13]"></div>
+    <!-- Content -->
+    <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-28">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <!-- Text Content -->
+            <div class="flex-1 flex flex-col gap-6 text-center md:text-right">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 dark:bg-sky-400/10 border border-white/20 dark:border-sky-400/20 w-fit mx-auto md:mx-0 backdrop-blur-sm">
+                    <i class="fa-solid fa-brain text-sky-400 text-sm"></i>
+                    <span class="text-white dark:text-sky-400 font-label-md text-label-sm">Creative Brain - المنصة التعليمية</span>
+                </div>
+                <h1 class="font-display-lg text-[32px] md:text-[44px] lg:text-display-lg text-white leading-tight tracking-tight font-bold">
+                    مستقبلك الأكاديمي <br/>
+                    <span class="text-sky-400">يبدأ هنا</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    منصة تعليمية متطورة توفر بيئة متكاملة لإدارة الدورات، تقديم الاختبارات التفاعلية، ومتابعة دقيقة لمستوى الطلاب لضمان تفوقهم الأكاديمي.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
+                    <a href="login-page.html" class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-label-md text-label-md px-8 py-3.5 rounded-lg flex items-center gap-2 hover:-translate-y-px transition-all duration-200 shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
+                        <span>ابدأ الآن</span>
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Hero Logo -->
+            <div class="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72">
+                <img src="imgs/WhatsApp Image 2026-08-17 at 4.51.23 AM.jpeg" alt="Creative Brain Logo" class="w-full h-full object-contain drop-shadow-2xl rounded-2xl">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== STATS SECTION ======== -->
+<section class="w-full bg-background dark:bg-[#020b13] transition-colors duration-300">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+            <!-- Stat 1 -->
+            <div class="flex items-center gap-4 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-5 md:p-6 hover:-translate-y-px transition-all duration-200 shadow-sm">
+                <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-sky-400/10 flex items-center justify-center text-primary dark:text-sky-400 flex-shrink-0">
+                    <span class="material-symbols-outlined text-[24px]">school</span>
+                </div>
+                <div>
+                    <div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-white">1,500+</div>
+                    <div class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400">طالب مسجل</div>
+                </div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="flex items-center gap-4 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-5 md:p-6 hover:-translate-y-px transition-all duration-200 shadow-sm">
+                <div class="w-12 h-12 rounded-lg bg-secondary/10 dark:bg-sky-400/10 flex items-center justify-center text-secondary dark:text-sky-400 flex-shrink-0">
+                    <span class="material-symbols-outlined text-[24px]">menu_book</span>
+                </div>
+                <div>
+                    <div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-white">200+</div>
+                    <div class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400">دورة دراسية</div>
+                </div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="flex items-center gap-4 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-5 md:p-6 hover:-translate-y-px transition-all duration-200 shadow-sm">
+                <div class="w-12 h-12 rounded-lg bg-[#4059aa]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#4059aa] dark:text-sky-400 flex-shrink-0">
+                    <span class="material-symbols-outlined text-[24px]">play_circle</span>
+                </div>
+                <div>
+                    <div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-white">5,000+</div>
+                    <div class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400">محاضرة تفاعلية</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== FEATURES SECTION ======== -->
+<section class="w-full bg-surface-container-low dark:bg-[#051525]/50 transition-colors duration-300">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-sky-400/10 border border-primary/10 dark:border-sky-400/20 mb-4">
+                <span class="material-symbols-outlined text-primary dark:text-sky-400 text-[16px]">stars</span>
+                <span class="text-primary dark:text-sky-400 font-label-md text-label-sm">مميزاتنا</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface dark:text-white mb-3">
+                لماذا تختار Creative Brain؟
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400">
+                صممنا بيئة تعليمية تدمج بين التكنولوجيا الحديثة وأفضل الممارسات الأكاديمية لتقديم تجربة لا مثيل لها.
+            </p>
+        </div>
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+            <!-- Main Feature (Large Card) -->
+            <div class="md:col-span-7 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-6 md:p-8 flex flex-col gap-5 group hover:-translate-y-px transition-all duration-300 shadow-sm overflow-hidden relative">
+                <div class="absolute top-0 left-0 w-48 h-48 bg-primary/5 dark:bg-sky-400/5 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none"></div>
+                <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-sky-400/10 flex items-center justify-center text-primary dark:text-sky-400 z-10">
+                    <span class="material-symbols-outlined text-[24px]">auto_awesome_mosaic</span>
+                </div>
+                <div class="z-10">
+                    <h3 class="font-headline-md text-[20px] md:text-headline-md font-bold text-on-surface dark:text-white mb-2">مواد دراسية شاملة</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400 leading-relaxed max-w-md">
+                        محتوى غني ومنهجيات مدروسة تغطي كافة التخصصات بأسلوب عصري يسهل الاستيعاب والتطبيق العملي.
                     </p>
-</div>
-<!-- Form -->
-<form action="#" class="space-y-stack-md" method="POST">
-<!-- Email Input -->
-<div>
-<label class="block font-label-md text-label-md text-on-surface dark:text-slate-300 mb-2" for="email">كود الطالب</label>
-<div class="relative flex items-center bg-slate-100 dark:bg-slate-800 border border-transparent dark:border-slate-700 rounded-lg px-3 py-3 focus-within:bg-white dark:focus-within:bg-slate-900 focus-within:border-[#00236f] dark:focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-[#00236f] dark:focus-within:ring-sky-400 transition-all duration-200">
-<i class="fa-solid fa-user pl-2"></i>
-<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface dark:text-slate-100 placeholder-outline-variant dark:placeholder-slate-500 outline-none" dir="ltr" id="email" name="num" placeholder="كود الطالب" required="" minlength="8" pattern="[0-9]{8}" maxlength="8" style="text-align: right;" type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
-</div>
-</div>
-<!-- Password Input -->
-<div>
-<div class="flex justify-between items-center mb-2">
-<label class="block font-label-md text-label-md text-on-surface dark:text-slate-300" for="password">كلمة المرور</label>
-</div>
-<div class="relative flex items-center bg-slate-100 dark:bg-slate-800 border border-transparent dark:border-slate-700 rounded-lg px-3 py-3 focus-within:bg-white dark:focus-within:bg-slate-900 focus-within:border-[#00236f] dark:focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-[#00236f] dark:focus-within:ring-sky-400 transition-all duration-200">
-<i class="fa-solid fa-lock pl-2"></i>
-<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface dark:text-slate-100 placeholder-outline-variant dark:placeholder-slate-500 outline-none" dir="ltr" id="password" name="password" placeholder="••••••••" required="" style="text-align: right;" type="password"/>
-<button aria-label="Show password" class="absolute left-3 text-outline dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors focus:outline-none" type="button">
-<i class="fa-solid fa-eye pl-2"></i>
-</button>
-</div>
-</div>
-<!-- Submit Button -->
-<div class="pt-stack-sm">
-<button class="w-full bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-label-md text-label-md py-4 rounded-lg flex justify-center items-center gap-2 hover:-translate-y-px transition-all duration-200" type="submit">
-<span>دخول</span>
-<span class="material-symbols-outlined text-[20px]">login</span>
-</button>
-</div>
-</form>
-<!-- Divider -->
-<div class="mt-stack-lg mb-stack-md flex items-center">
-<div class="flex-grow border-t border-surface-dim dark:border-slate-800"></div>
-</div>
-<p class="font-body-md text-body-md text-white text-center dark:text-slate-400 mt-stack-md" style="color: #2e5fa0; font-weight: bold;">
-    للاشتراك و الحصول على كود الطالب تواصل مع  01552662000
-</p>
-</div>
-</div>
-<!-- Left Side: Visual Inspiration (LTR relative to the design, but physically on the left visually when dir="rtl") -->
-<div class="hidden md:block md:w-1/2 relative overflow-hidden bg-surface-container-lowest dark:bg-[#051525]">
-<!-- Background Image -->
-<div class="absolute inset-0"><img src="images/background.jpg.jpeg" alt="background" class="w-full h-full object-cover object-center dark:brightness-[0.75] transition-all duration-300"></div>
-</body>
-</html>
+                </div>
+                <!-- Feature Preview Image -->
+                <div class="mt-auto z-10 relative h-40 md:h-48 rounded-lg border border-outline-variant dark:border-slate-800 overflow-hidden">
+                    <img src="imgs/WhatsApp Image 2026-08-17 at 4.51.22 AM (1).jpeg" alt="Creative Brain Platform" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500">
+                </div>
+            </div>
+            <!-- Secondary Features (Right Column) -->
+            <div class="md:col-span-5 flex flex-col gap-4 md:gap-6">
+                <!-- Feature Card 2 -->
+                <div class="flex-1 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-6 md:p-8 flex flex-col gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-secondary/10 dark:bg-sky-400/10 flex items-center justify-center text-secondary dark:text-sky-400">
+                        <span class="material-symbols-outlined text-[24px]">quiz</span>
+                    </div>
+                    <h3 class="font-headline-md text-[18px] font-bold text-on-surface dark:text-white">امتحانات تفاعلية</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 leading-relaxed">
+                        تقييم مستمر لمستوى الطالب عبر اختبارات ذكية تقدم تحليلات فورية لنقاط القوة والضعف.
+                    </p>
+                </div>
+                <!-- Feature Card 3 -->
+                <div class="flex-1 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-6 md:p-8 flex flex-col gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-[#4059aa]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#4059aa] dark:text-sky-400">
+                        <span class="material-symbols-outlined text-[24px]">monitoring</span>
+                    </div>
+                    <h3 class="font-headline-md text-[18px] font-bold text-on-surface dark:text-white">متابعة دقيقة للطلاب</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 leading-relaxed">
+                        لوحات تحكم متقدمة تتيح للمشرفين تتبع تقدم الطلاب وتفاعلهم مع المحتوى بدقة متناهية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== CTA / VALUE PROP SECTION ======== -->
+<section class="w-full bg-background dark:bg-[#020b13] transition-colors duration-300">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+        <div class="relative bg-primary-container dark:bg-[#0c1e3d] rounded-xl overflow-hidden border border-transparent dark:border-slate-800 shadow-lg">
+            <!-- Background Decoration -->
+            <div class="absolute inset-0 opacity-10">
+                <img src="imgs/background.jpg.jpeg" alt="" class="w-full h-full object-cover">
+            </div>
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 p-8 md:p-12 lg:p-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 w-28 h-28 md:w-36 md:h-36">
+                    <img src="imgs/1.jpeg" alt="Creative Brain Logo" class="w-full h-full object-contain rounded-xl shadow-lg">
+                </div>
+                <!-- Text -->
+                <div class="flex-1 text-center md:text-right">
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-white mb-3">
+                        رؤيتنا للتعليم المتكامل
+                    </h2>
+                    <p class="font-body-md text-body-md text-slate-300 leading-relaxed max-w-2xl mb-6">
+                        نحن في Creative Brain نؤمن بأن التكنولوجيا هي الجسر نحو مستقبل تعليمي مشرق. نسعى لتمكين المؤسسات التعليمية بأدوات إدارية قوية وواجهات مستخدم سلسة، لنركز معاً على ما يهم حقاً: بناء عقول قادرة على الابتكار.
+                    </p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <a href="login-page.html" class="bg-white hover:bg-slate-100 text-primary-container font-label-md text-label-md px-6 py-3 rounded-lg flex items-center gap-2 hover:-translate-y-px transition-all duration-200 shadow-md">
+                            <span>سجّل دخولك الآن</span>
+                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="w-full bg-surface-container-lowest dark:bg-[#051525] border-t border-outline-variant dark:border-slate-800 transition-colors duration-300 mt-auto">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <!-- Footer Logo -->
+            <div class="flex items-center gap-2 text-primary dark:text-sky-400">
+                <i class="fa-solid fa-brain text-[20px]"></i>
+                <span class="font-headline-md text-[18px] font-bold tracking-tight">Creative Brain</span>
+            </div>
+            <!-- Links -->
+            <div class="flex gap-6 flex-wrap justify-center">
+                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-body-sm hover:underline" href="#">سياسة الخصوصية</a>
+                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-body-sm hover:underline" href="#">شروط الاستخدام</a>
+                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-body-sm hover:underline" href="#">اتصل بنا</a>
+            </div>
+            <!-- Copyright -->
+            <div class="text-on-surface-variant dark:text-slate-500 font-body-sm text-body-sm">
+                © 2024 Creative Brain. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ======== THEME TOGGLE SCRIPT ======== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+    const updateIcon = (isDark) => {
+        if (themeToggleIcon) {
+            themeToggleIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    };
+
+    const isDark = document.documentElement.classList.contains('dark');
+    updateIcon(isDark);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            if (isCurrentlyDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateIcon(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateIcon(true);
+            }
+        });
+    }
+});
+</script>
+</body></html>
