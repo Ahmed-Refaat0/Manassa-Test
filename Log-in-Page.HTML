@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creative-Brain</title>
+<link rel="icon" type="image/png" href="imgs/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="script.js"></script>
+<link rel="stylesheet" href="css/all.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    // Inline script to prevent FOUC (Flash of Unstyled Content)
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "secondary-fixed-dim": "#89ceff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "surface-tint": "#4059aa",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#006591",
+                        "secondary-container": "#39b8fd",
+                        "surface-container-high": "#dee9fc",
+                        "tertiary-container": "#6e2c00",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-surface-variant": "#444651",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-surface": "#121c2a",
+                        "on-secondary-container": "#004666",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-tertiary-container": "#f39461",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "outline": "#757682",
+                        "tertiary": "#4b1c00",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#90a8ff",
+                        "on-background": "#121c2a",
+                        "outline-variant": "#c5c5d3",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-primary": "#b6c4ff",
+                        "inverse-surface": "#27313f",
+                        "primary": "#00236f",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "surface-container-highest": "#d9e3f6",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d9e3f6",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "body-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "label-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "display-lg": ["Be Vietnam Pro", "sans-serif"],
+                        "body-lg": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "headline-md": ["Be Vietnam Pro", "sans-serif"],
+                        "headline-lg": ["Be Vietnam Pro", "sans-serif"],
+                        "label-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "headline-lg-mobile": ["Be Vietnam Pro", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .display-font {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        /* Remove spin buttons from number inputs */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-[#020b13] min-h-screen flex items-center justify-center p-0 md:p-margin-desktop antialiased text-on-surface dark:text-slate-100 transition-colors duration-300">
+<!-- Main Container: Split Screen Layout -->
+<div class="flex flex-col md:flex-row w-full h-screen md:h-auto max-w-container-max bg-surface-container-lowest dark:bg-[#051525] md:rounded-xl md:shadow-lg dark:md:shadow-none overflow-hidden md:min-h-[700px] border border-transparent dark:border-slate-800 transition-all duration-300">
+<!-- Right Side: Login Form (RTL - this is physically on the right visually when dir="rtl") -->
+<div class="w-full md:w-1/2 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-stack-lg z-10 bg-surface-container-lowest dark:bg-[#051525] transition-colors duration-300">
+<div class="max-w-md mx-auto w-full flex flex-col h-full justify-center">
+<!-- Logo & Header -->
+<div class="mb-stack-lg text-center md:text-right">
+<div class="flex items-center justify-between gap-2 mb-stack-sm text-primary dark:text-sky-400">
+<div class="flex items-center gap-2">
+<i class="fa-solid fa-brain text-[32px]"></i>
+<span class="font-headline-md text-headline-md font-bold tracking-tight">Creative Brain</span>
+</div>
+<button id="theme-toggle" class="p-2 rounded-full border border-outline-variant hover:bg-surface-container text-on-surface dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
+<span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+</div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface dark:text-white mt-stack-md mb-2">
+                        تسجيل الدخول
+                    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400">
+                        أدخل بياناتك للوصول إلى دروسك
+                    </p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-stack-md" method="POST">
+<!-- Email Input -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface dark:text-slate-300 mb-2" for="email">كود الطالب</label>
+<div class="relative flex items-center bg-slate-100 dark:bg-slate-800 border border-transparent dark:border-slate-700 rounded-lg px-3 py-3 focus-within:bg-white dark:focus-within:bg-slate-900 focus-within:border-[#00236f] dark:focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-[#00236f] dark:focus-within:ring-sky-400 transition-all duration-200">
+<i class="fa-solid fa-user pl-2"></i>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface dark:text-slate-100 placeholder-outline-variant dark:placeholder-slate-500 outline-none" dir="ltr" id="email" name="num" placeholder="كود الطالب" required="" minlength="8" pattern="[0-9]{8}" maxlength="8" style="text-align: right;" type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+</div>
+</div>
+<!-- Password Input -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block font-label-md text-label-md text-on-surface dark:text-slate-300" for="password">كلمة المرور</label>
+</div>
+<div class="relative flex items-center bg-slate-100 dark:bg-slate-800 border border-transparent dark:border-slate-700 rounded-lg px-3 py-3 focus-within:bg-white dark:focus-within:bg-slate-900 focus-within:border-[#00236f] dark:focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-[#00236f] dark:focus-within:ring-sky-400 transition-all duration-200">
+<i class="fa-solid fa-lock pl-2"></i>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface dark:text-slate-100 placeholder-outline-variant dark:placeholder-slate-500 outline-none" dir="ltr" id="password" name="password" placeholder="••••••••" required="" style="text-align: right;" type="password"/>
+<button aria-label="Show password" class="absolute left-3 text-outline dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors focus:outline-none" type="button">
+<i class="fa-solid fa-eye pl-2"></i>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-stack-sm">
+<button class="w-full bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-label-md text-label-md py-4 rounded-lg flex justify-center items-center gap-2 hover:-translate-y-px transition-all duration-200" type="submit">
+<span>دخول</span>
+<span class="material-symbols-outlined text-[20px]">login</span>
+</button>
+</div>
+</form>
+<!-- Divider -->
+<div class="mt-stack-lg mb-stack-md flex items-center">
+<div class="flex-grow border-t border-surface-dim dark:border-slate-800"></div>
+</div>
+<p class="font-body-md text-body-md text-white text-center dark:text-slate-400 mt-stack-md" style="color: #2e5fa0; font-weight: bold;">
+    للاشتراك و الحصول على كود الطالب تواصل مع  01552662000
+</p>
+</div>
+</div>
+<!-- Left Side: Visual Inspiration (LTR relative to the design, but physically on the left visually when dir="rtl") -->
+<div class="hidden md:block md:w-1/2 relative overflow-hidden bg-surface-container-lowest dark:bg-[#051525]">
+<!-- Background Image -->
+<div class="absolute inset-0"><img src="images/background.jpg.jpeg" alt="background" class="w-full h-full object-cover object-center dark:brightness-[0.75] transition-all duration-300"></div>
+</body>
+</html>
