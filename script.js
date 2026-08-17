@@ -1,3 +1,9 @@
+// Creative Brain - Centralized Configuration
+const socialLinks = {
+    whatsapp: "https://wa.me/201552662000",
+    tiktok: "https://www.tiktok.com/@creativebrain"
+};
+
 // Creative Brain - Script for Theme & Password Visibility Toggle
 document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle Logic
@@ -27,6 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateIcon(true);
             }
         });
+    }
+
+    // Social Links Configuration
+    const whatsappLink = document.getElementById('whatsapp-link');
+    const tiktokLink = document.getElementById('tiktok-link');
+    
+    if (whatsappLink && socialLinks.whatsapp) {
+        whatsappLink.href = socialLinks.whatsapp;
+    }
+    if (tiktokLink && socialLinks.tiktok) {
+        tiktokLink.href = socialLinks.tiktok;
     }
 
     // Password Visibility Logic

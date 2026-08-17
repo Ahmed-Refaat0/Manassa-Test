@@ -134,19 +134,19 @@
         }
     </style>
 </head>
-<body class="bg-background dark:bg-[#020b13] min-h-screen flex flex-col antialiased text-on-surface dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+<body class="bg-[#f0f4ff] dark:bg-[#020b13] min-h-screen flex flex-col antialiased text-[#1a1a2e] dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
 
 <!-- ======== HEADER ======== -->
-<header class="sticky top-0 z-50 w-full bg-surface-container-lowest/95 dark:bg-[#051525]/95 backdrop-blur-md border-b border-outline-variant dark:border-slate-800 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#051525]/95 backdrop-blur-md border-b border-[#e0e7ff] dark:border-slate-800 transition-colors duration-300">
     <div class="max-w-container-max mx-auto flex items-center justify-between h-14 sm:h-16 px-3 sm:px-margin-mobile md:px-margin-desktop">
         <!-- Logo -->
-        <a href="welcome-page.html" class="flex items-center gap-1.5 sm:gap-2 text-primary dark:text-sky-400">
+        <a href="welcome-page.html" class="flex items-center gap-1.5 sm:gap-2 text-[#00236f] dark:text-sky-400">
             <i class="fa-solid fa-brain text-[22px] sm:text-[28px] md:text-[32px]"></i>
             <span class="font-headline-md text-[16px] sm:text-[20px] md:text-headline-md font-bold tracking-tight">Creative Brain</span>
         </a>
         <!-- Actions -->
         <div class="flex items-center gap-2 sm:gap-3">
-            <button id="theme-toggle" class="p-1.5 sm:p-2 rounded-full border border-outline-variant hover:bg-surface-container text-on-surface dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
+            <button id="theme-toggle" class="p-1.5 sm:p-2 rounded-full border border-[#d0dbed] hover:bg-[#e6eeff] text-[#444651] dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
                 <span id="theme-toggle-icon" class="material-symbols-outlined text-[18px] sm:text-[20px]">dark_mode</span>
             </button>
             <a href="login-page.html" class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-label-md text-[12px] sm:text-label-md px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg flex items-center gap-1.5 sm:gap-2 hover:-translate-y-px transition-all duration-200">
@@ -161,16 +161,16 @@
 <section class="relative w-full overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0">
-        <img src="imgs/background.jpg.jpeg" alt="Creative Brain Background" class="w-full h-full object-cover object-center dark:brightness-[0.4] brightness-[0.25] transition-all duration-300">
+        <img src="imgs/background.jpg.jpeg" alt="Creative Brain Background" class="w-full h-full object-cover object-center dark:brightness-[0.4] brightness-[0.35] transition-all duration-300">
     </div>
     <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background dark:to-[#020b13]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f0f4ff] dark:to-[#020b13]"></div>
     <!-- Content -->
     <div class="relative z-10 max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-10 sm:py-14 md:py-28">
         <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-16">
             <!-- Text Content -->
             <div class="flex-1 flex flex-col gap-4 sm:gap-5 md:gap-6 text-center md:text-right">
-                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/15 dark:bg-sky-400/10 border border-white/20 dark:border-sky-400/20 w-fit mx-auto md:mx-0 backdrop-blur-sm">
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/20 dark:bg-sky-400/10 border border-white/30 dark:border-sky-400/20 w-fit mx-auto md:mx-0 backdrop-blur-sm">
                     <i class="fa-solid fa-brain text-sky-400 text-xs sm:text-sm"></i>
                     <span class="hero-badge text-white dark:text-sky-400 font-label-md text-[11px] sm:text-label-sm">Creative Brain - المنصة التعليمية</span>
                 </div>
@@ -178,7 +178,7 @@
                     مستقبلك الأكاديمي <br/>
                     <span class="text-sky-400">يبدأ هنا</span>
                 </h1>
-                <p class="font-body-lg text-[15px] sm:text-body-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                <p class="font-body-lg text-[15px] sm:text-body-lg text-slate-200 max-w-xl mx-auto md:mx-0 leading-relaxed">
                     منصة تعليمية متطورة توفر بيئة متكاملة لإدارة الدورات، تقديم الاختبارات التفاعلية، ومتابعة دقيقة لمستوى الطلاب لضمان تفوقهم الأكاديمي.
                 </p>
                 <div class="flex flex-wrap gap-3 pt-1 sm:pt-2 justify-center md:justify-start">
@@ -196,59 +196,59 @@
     </div>
 </section>
 <!-- ======== FEATURES SECTION ======== -->
-<section class="w-full bg-surface-container-low dark:bg-[#051525]/50 transition-colors duration-300">
+<section class="w-full bg-[#e6eeff] dark:bg-[#051525]/50 transition-colors duration-300">
     <div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-10 sm:py-14 md:py-24">
         <!-- Section Header -->
         <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-16">
-            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-primary/5 dark:bg-sky-400/10 border border-primary/10 dark:border-sky-400/20 mb-3 sm:mb-4">
-                <span class="material-symbols-outlined text-primary dark:text-sky-400 text-[14px] sm:text-[16px]">stars</span>
-                <span class="text-primary dark:text-sky-400 font-label-md text-[11px] sm:text-label-sm">مميزاتنا</span>
+            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#00236f]/5 dark:bg-sky-400/10 border border-[#00236f]/10 dark:border-sky-400/20 mb-3 sm:mb-4">
+                <span class="material-symbols-outlined text-[#00236f] dark:text-sky-400 text-[14px] sm:text-[16px]">stars</span>
+                <span class="text-[#00236f] dark:text-sky-400 font-label-md text-[11px] sm:text-label-sm">مميزاتنا</span>
             </div>
-            <h2 class="font-headline-lg text-[20px] sm:text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface dark:text-white mb-2 sm:mb-3">
+            <h2 class="font-headline-lg text-[20px] sm:text-headline-lg-mobile md:text-headline-lg font-bold text-[#1a1a2e] dark:text-white mb-2 sm:mb-3">
                 لماذا تختار Creative Brain؟
             </h2>
-            <p class="font-body-md text-[14px] sm:text-body-md text-on-surface-variant dark:text-slate-400 px-2 sm:px-0">
+            <p class="font-body-md text-[14px] sm:text-body-md text-[#444651] dark:text-slate-400 px-2 sm:px-0">
                 صممنا بيئة تعليمية تدمج بين التكنولوجيا الحديثة وأفضل الممارسات الأكاديمية لتقديم تجربة لا مثيل لها.
             </p>
         </div>
         <!-- Features Grid -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-6">
             <!-- Main Feature (Large Card) -->
-            <div class="md:col-span-7 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 md:gap-5 group hover:-translate-y-px transition-all duration-300 shadow-sm overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-48 h-48 bg-primary/5 dark:bg-sky-400/5 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none"></div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 dark:bg-sky-400/10 flex items-center justify-center text-primary dark:text-sky-400 z-10">
+            <div class="md:col-span-7 bg-white dark:bg-[#051525] border border-[#d0dbed] dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 md:gap-5 group hover:-translate-y-px transition-all duration-300 shadow-sm overflow-hidden relative">
+                <div class="absolute top-0 left-0 w-48 h-48 bg-[#00236f]/5 dark:bg-sky-400/5 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none"></div>
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400 z-10">
                     <span class="material-symbols-outlined text-[20px] sm:text-[24px]">auto_awesome_mosaic</span>
                 </div>
                 <div class="z-10">
-                    <h3 class="font-headline-md text-[17px] sm:text-[20px] md:text-headline-md font-bold text-on-surface dark:text-white mb-1.5 sm:mb-2">مواد دراسية شاملة</h3>
-                    <p class="font-body-md text-[13px] sm:text-body-md text-on-surface-variant dark:text-slate-400 leading-relaxed max-w-md">
+                    <h3 class="font-headline-md text-[17px] sm:text-[20px] md:text-headline-md font-bold text-[#1a1a2e] dark:text-white mb-1.5 sm:mb-2">مواد دراسية شاملة</h3>
+                    <p class="font-body-md text-[13px] sm:text-body-md text-[#444651] dark:text-slate-400 leading-relaxed max-w-md">
                         محتوى غني ومنهجيات مدروسة تغطي كافة التخصصات بأسلوب عصري يسهل الاستيعاب والتطبيق العملي.
                     </p>
                 </div>
                 <!-- Feature Preview Image -->
-                <div class="mt-auto z-10 relative h-32 sm:h-40 md:h-48 rounded-lg border border-outline-variant dark:border-slate-800 overflow-hidden">
+                <div class="mt-auto z-10 relative h-32 sm:h-40 md:h-48 rounded-lg border border-[#d0dbed] dark:border-slate-800 overflow-hidden">
                     <img src="imgs/WhatsApp Image 2026-08-17 at 4.51.22 AM (1).jpeg" alt="Creative Brain Platform" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500">
                 </div>
             </div>
             <!-- Secondary Features (Right Column) -->
             <div class="md:col-span-5 flex flex-col gap-3 sm:gap-4 md:gap-6">
                 <!-- Feature Card 2 -->
-                <div class="flex-1 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-secondary/10 dark:bg-sky-400/10 flex items-center justify-center text-secondary dark:text-sky-400">
+                <div class="flex-1 bg-white dark:bg-[#051525] border border-[#d0dbed] dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#006591]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#006591] dark:text-sky-400">
                         <span class="material-symbols-outlined text-[20px] sm:text-[24px]">quiz</span>
                     </div>
-                    <h3 class="font-headline-md text-[16px] sm:text-[18px] font-bold text-on-surface dark:text-white">امتحانات تفاعلية</h3>
-                    <p class="font-body-sm text-[12px] sm:text-body-sm text-on-surface-variant dark:text-slate-400 leading-relaxed">
+                    <h3 class="font-headline-md text-[16px] sm:text-[18px] font-bold text-[#1a1a2e] dark:text-white">امتحانات تفاعلية</h3>
+                    <p class="font-body-sm text-[12px] sm:text-body-sm text-[#444651] dark:text-slate-400 leading-relaxed">
                         تقييم مستمر لمستوى الطالب عبر اختبارات ذكية تقدم تحليلات فورية لنقاط القوة والضعف.
                     </p>
                 </div>
                 <!-- Feature Card 3 -->
-                <div class="flex-1 bg-surface-container-lowest dark:bg-[#051525] border border-outline-variant dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
+                <div class="flex-1 bg-white dark:bg-[#051525] border border-[#d0dbed] dark:border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 hover:-translate-y-px transition-all duration-300 shadow-sm">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#4059aa]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#4059aa] dark:text-sky-400">
                         <span class="material-symbols-outlined text-[20px] sm:text-[24px]">monitoring</span>
                     </div>
-                    <h3 class="font-headline-md text-[16px] sm:text-[18px] font-bold text-on-surface dark:text-white">متابعة دقيقة للطلاب</h3>
-                    <p class="font-body-sm text-[12px] sm:text-body-sm text-on-surface-variant dark:text-slate-400 leading-relaxed">
+                    <h3 class="font-headline-md text-[16px] sm:text-[18px] font-bold text-[#1a1a2e] dark:text-white">متابعة دقيقة للطلاب</h3>
+                    <p class="font-body-sm text-[12px] sm:text-body-sm text-[#444651] dark:text-slate-400 leading-relaxed">
                         لوحات تحكم متقدمة تتيح للمشرفين تتبع تقدم الطلاب وتفاعلهم مع المحتوى بدقة متناهية.
                     </p>
                 </div>
@@ -257,29 +257,32 @@
     </div>
 </section>
 <!-- ======== FOOTER ======== -->
-<footer class="w-full bg-surface-container-lowest dark:bg-[#051525] border-t border-outline-variant dark:border-slate-800 transition-colors duration-300 mt-auto">
+<footer class="w-full bg-white dark:bg-[#051525] border-t border-[#d0dbed] dark:border-slate-800 transition-colors duration-300 mt-auto">
     <div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-6 sm:py-8">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
             <!-- Footer Logo -->
-            <div class="flex items-center gap-1.5 sm:gap-2 text-primary dark:text-sky-400">
+            <div class="flex items-center gap-1.5 sm:gap-2 text-[#00236f] dark:text-sky-400">
                 <i class="fa-solid fa-brain text-[18px] sm:text-[20px]"></i>
                 <span class="font-headline-md text-[16px] sm:text-[18px] font-bold tracking-tight">Creative Brain</span>
             </div>
-            <!-- Links -->
-            <div class="flex gap-4 sm:gap-6 flex-wrap justify-center">
-                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-[12px] sm:text-body-sm hover:underline" href="#">سياسة الخصوصية</a>
-                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-[12px] sm:text-body-sm hover:underline" href="#">شروط الاستخدام</a>
-                <a class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-sky-400 transition-colors font-body-sm text-[12px] sm:text-body-sm hover:underline" href="#">اتصل بنا</a>
+            <!-- Social Links -->
+            <div class="flex gap-3 sm:gap-4">
+                <a id="whatsapp-link" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-[18px] sm:text-[20px]"></i>
+                </a>
+                <a id="tiktok-link" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#000000] hover:bg-[#1a1a1a] text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok text-[18px] sm:text-[20px]"></i>
+                </a>
             </div>
             <!-- Copyright -->
-            <div class="text-on-surface-variant dark:text-slate-500 font-body-sm text-[11px] sm:text-body-sm">
+            <div class="text-[#444651] dark:text-slate-500 font-body-sm text-[11px] sm:text-body-sm">
                 © 2026 Creative Brain. جميع الحقوق محفوظة.
             </div>
         </div>
         <!-- Credit -->
-        <div class="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-outline-variant/50 dark:border-slate-800/50 text-center">
-            <p class="text-on-surface-variant/70 dark:text-slate-500/70 font-body-sm text-[10px] sm:text-[12px] tracking-wide">
-                Created by <span class="font-semibold text-on-surface-variant dark:text-slate-400">Ahmed</span>, <span class="font-semibold text-on-surface-variant dark:text-slate-400">Saif</span>, <span class="font-semibold text-on-surface-variant dark:text-slate-400">Ahmed</span>
+        <div class="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-[#d0dbed]/50 dark:border-slate-800/50 text-center">
+            <p class="text-[#444651]/70 dark:text-slate-500/70 font-body-sm text-[10px] sm:text-[12px] tracking-wide">
+                Created by <span class="font-semibold text-[#444651] dark:text-slate-400">Ahmed</span>, <span class="font-semibold text-[#444651] dark:text-slate-400">Saif</span>, <span class="font-semibold text-[#444651] dark:text-slate-400">Ahmed</span>
             </p>
         </div>
     </div>

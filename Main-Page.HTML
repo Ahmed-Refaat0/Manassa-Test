@@ -1,231 +1,349 @@
 <!DOCTYPE html><html dir="rtl" lang="ar"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Admin Page</title>
+<title>Admin Page - Creative Brain</title>
 <link rel="icon" type="image/png" href="imgs/favicon.png">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style src="css/all.css"></style>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/all.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="script.js"></script>
 <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              dark: '#0f172a',    // Very dark blue/slate for bg
-              darker: '#0b1121',  // Even darker for sidebar/nav
-              card: '#1e293b',    // Slightly lighter for cards
-              primary: '#3b82f6', // Bright blue for primary actions
-              text: '#f8fafc',    // Very light text
-              muted: '#94a3b8',   // Muted text
-              border: '#334155'   // Dark border
-            }
-          },
-          borderRadius: {
-            'custom': '8px',
-          }
+    // Prevent FOUC (Flash of Unstyled Content)
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "secondary-fixed-dim": "#89ceff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "surface-tint": "#4059aa",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#006591",
+                        "secondary-container": "#39b8fd",
+                        "surface-container-high": "#dee9fc",
+                        "tertiary-container": "#6e2c00",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-surface-variant": "#444651",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-surface": "#121c2a",
+                        "on-secondary-container": "#004666",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d0dbed",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-tertiary-container": "#f39461",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "outline": "#757682",
+                        "tertiary": "#4b1c00",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#90a8ff",
+                        "on-background": "#121c2a",
+                        "outline-variant": "#c5c5d3",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-primary": "#b6c4ff",
+                        "inverse-surface": "#27313f",
+                        "primary": "#00236f",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "surface-container-highest": "#d9e3f6",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d9e3f6",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "body-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "label-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "display-lg": ["Be Vietnam Pro", "sans-serif"],
+                        "body-lg": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "headline-md": ["Be Vietnam Pro", "sans-serif"],
+                        "headline-lg": ["Be Vietnam Pro", "sans-serif"],
+                        "label-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+                        "headline-lg-mobile": ["Be Vietnam Pro", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
         }
-      }
-    }
-  </script>
-<style data-purpose="custom-utilities">
-    /* Additional custom scrollbar for sleek dark mode look */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f172a; 
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #334155; 
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #475569; 
-    }
-  </style>
+    </script>
+<style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .display-font {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        /* Prevent horizontal overflow on all screen sizes */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f4ff;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d0dbed;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b6c4ff;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
 </head>
-<body class="bg-brand-dark text-brand-text font-sans h-screen flex overflow-hidden selection:bg-brand-primary selection:text-white">
+<body class="bg-[#f0f4ff] dark:bg-[#020b13] min-h-screen flex flex-col md:flex-row antialiased text-[#1a1a2e] dark:text-slate-100 transition-colors duration-300 overflow-hidden relative">
+<!-- Mobile Sidebar Backdrop -->
+<div id="sidebar-backdrop" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"></div>
 <!-- BEGIN: Sidebar -->
-<aside class="w-64 bg-brand-darker flex flex-col justify-between border-l border-brand-border h-full flex-shrink-0 relative z-20">
+<aside id="sidebar" class="hidden md:flex fixed md:relative bottom-4 left-4 md:bottom-auto md:left-auto w-64 md:w-64 bg-[#f0f4ff] dark:bg-[#020b13] flex-col justify-between border border-[#d0dbed] dark:border-slate-800 h-auto max-h-[80vh] md:h-full flex-shrink-0 z-50 transition-colors duration-300 order-2 md:order-1 rounded-xl md:rounded-none shadow-xl overflow-hidden">
 <!-- Sidebar Header / Logo Area -->
-<div class="p-2 border-b border-brand-border flex items-center justify-between">
-<div>
-    <img src="imgs/file_00000000f3fc82439c3cd4700240caca.png">
-</div>
+<div class="p-3 border-b border-[#d0dbed] dark:border-slate-800 flex items-center justify-between">
+<a href="#" class="nav-link flex items-center gap-2 text-[#00236f] dark:text-sky-400" data-section="home">
+    <i class="fa-solid fa-brain text-[24px]"></i>
+    <span class="font-headline-md text-[16px] font-bold tracking-tight">Creative Brain</span>
+</a>
+<button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg border border-[#d0dbed] dark:border-slate-700 hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-300 transition-colors">
+    <i class="fas fa-times"></i>
+</button>
 </div>
 <!-- Navigation Menu -->
 <nav class="flex-1 py-4 overflow-y-auto" data-purpose="main-navigation">
 <ul class="space-y-1 px-3">
 <li class="">
-<div class="text-xs font-semibold text-brand-muted uppercase tracking-wider mb-2 px-3">التنقل الرئيسي</div>
+<div class="text-xs font-semibold text-[#444651] dark:text-slate-500 uppercase tracking-wider mb-2 px-3">التنقل الرئيسي</div>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-3 py-2.5 rounded-custom bg-brand-primary/10 text-brand-primary font-medium transition-colors" href="#">
+<a class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#00236f]/10 dark:bg-sky-400/10 text-[#00236f] dark:text-sky-400 font-medium transition-colors" data-section="home" href="#">
 <i class="fas fa-home w-5 text-center"></i>
 <span class="">الرئيسية</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center justify-between px-3 py-2.5 rounded-custom text-brand-muted hover:text-brand-text hover:bg-brand-card transition-colors group" href="#">
+<a class="nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-[#444651] dark:text-slate-400 hover:text-[#1a1a2e] dark:hover:text-white hover:bg-[#e6eeff] dark:hover:bg-slate-800 transition-colors group" data-section="courses" href="#">
 <div class="flex items-center gap-3">
-<i class="fas fa-book w-5 text-center group-hover:text-white transition-colors"></i>
+<i class="fas fa-book w-5 text-center group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors"></i>
 <span class="">المواد الدراسية</span>
 </div>
 <i class="fas fa-chevron-left text-xs opacity-50"></i>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-3 py-2.5 rounded-custom text-brand-muted hover:text-brand-text hover:bg-brand-card transition-colors group" href="#">
-<i class="fas fa-file-alt w-5 text-center group-hover:text-white transition-colors"></i>
+<a class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#444651] dark:text-slate-400 hover:text-[#1a1a2e] dark:hover:text-white hover:bg-[#e6eeff] dark:hover:bg-slate-800 transition-colors group" data-section="exams" href="#">
+<i class="fas fa-file-alt w-5 text-center group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors"></i>
 <span class="">الامتحانات والاختبارات</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-3 py-2.5 rounded-custom text-brand-muted hover:text-brand-text hover:bg-brand-card transition-colors group" href="#">
-<i class="fas fa-users w-5 text-center group-hover:text-white transition-colors"></i>
+<a class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#444651] dark:text-slate-400 hover:text-[#1a1a2e] dark:hover:text-white hover:bg-[#e6eeff] dark:hover:bg-slate-800 transition-colors group" data-section="students" href="#">
+<i class="fas fa-users w-5 text-center group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors"></i>
 <span class="">الطلاب</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-3 py-2.5 rounded-custom text-brand-muted hover:text-brand-text hover:bg-brand-card transition-colors group" href="#">
-<i class="fas fa-cog w-5 text-center group-hover:text-white transition-colors"></i>
+<a class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#444651] dark:text-slate-400 hover:text-[#1a1a2e] dark:hover:text-white hover:bg-[#e6eeff] dark:hover:bg-slate-800 transition-colors group" data-section="account" href="#">
+<i class="fas fa-cog w-5 text-center group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors"></i>
 <span class="">حسابي</span>
 </a>
 </li>
 </ul>
 </nav>
 <!-- User Profile & Logout -->
-<div class="p-4 border-t border-brand-border bg-brand-darker">
+<div class="p-4 border-t border-[#d0dbed] dark:border-slate-800 bg-white dark:bg-[#051525]">
 <div class="flex items-center gap-3 mb-4 px-2">
-<div class="w-10 h-10 rounded-full bg-brand-card flex items-center justify-center text-brand-primary border border-brand-border">
+<div class="w-10 h-10 rounded-full bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400 border border-[#d0dbed] dark:border-slate-700">
 <i class="fas fa-user-shield"></i>
 </div>
 <div>
-<p class="text-sm font-semibold text-white">Admin</p>
-<p class="text-xs text-brand-muted">مسؤول النظام (معلم)</p>
+<p class="text-sm font-semibold text-[#1a1a2e] dark:text-white">Admin</p>
+<p class="text-xs text-[#444651] dark:text-slate-400">مسؤول النظام (معلم)</p>
 </div>
 </div>
-<button class="w-full flex items-center gap-2 px-3 py-2 rounded-custom text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-colors">
+<button id="logout-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-red-500 hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-400/10 transition-colors">
 <i class="fas fa-sign-out-alt rotate-180"></i>
 <span class="text-sm font-medium">تسجيل الخروج</span>
 </button>
 <!-- Credit -->
-<div class="mt-3 pt-3 border-t border-brand-border text-center">
-    <p class="text-brand-muted/50 text-[10px] tracking-wide">
-        Created by <span class="text-brand-muted/80 font-medium">Ahmed</span>, <span class="text-brand-muted/80 font-medium">Saif</span>, <span class="text-brand-muted/80 font-medium">Ahmed</span>
+<div class="pt-3 border-t border-[#d0dbed] dark:border-slate-800 text-center">
+    <p class="text-[#444651]/50 dark:text-slate-500/50 text-[10px] tracking-wide">
+        Created by <span class="text-[#444651]/80 dark:text-slate-400/80 font-medium">Ahmed</span>, <span class="text-[#444651]/80 dark:text-slate-400/80 font-medium">Saif</span>, <span class="text-[#444651]/80 dark:text-slate-400/80 font-medium">Ahmed</span>
     </p>
 </div>
 </div>
 </aside>
 <!-- END: Sidebar -->
 <!-- BEGIN: Main Content Area -->
-<div class="flex-1 flex flex-col relative overflow-hidden">
+<div class="flex-1 flex flex-col relative overflow-hidden order-1 md:order-2">
 <!-- Top Header Bar -->
-<header class="h-16 flex items-center justify-between px-8 border-b border-brand-border bg-brand-dark z-10 flex-shrink-0">
+<header class="h-16 flex items-center justify-between px-4 sm:px-8 border-b border-[#d0dbed] dark:border-slate-800 bg-white dark:bg-[#051525] z-10 flex-shrink-0 transition-colors duration-300">
 <div class="flex items-center gap-2">
-<h2 class="text-xl font-bold text-white">الرئيسية</h2>
-<span class="text-sm text-brand-muted bg-brand-card px-2 py-0.5 rounded-md border border-brand-border">وضع إدارة المحتوى التعليمي</span>
+<button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg border border-[#d0dbed] dark:border-slate-700 hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-300 transition-colors mr-2">
+    <i class="fas fa-bars"></i>
+</button>
+<h2 class="text-xl font-bold text-[#1a1a2e] dark:text-white">الرئيسية</h2>
+<span class="text-sm text-[#444651] dark:text-slate-400 bg-[#e6eeff] dark:bg-slate-800 px-2 py-0.5 rounded-md border border-[#d0dbed] dark:border-slate-700 hidden sm:inline-block">وضع إدارة المحتوى التعليمي</span>
 </div>
-<div class="flex items-center gap-6 text-sm">
-<div class="flex items-center gap-2 text-brand-muted">
+<div class="flex items-center gap-4 sm:gap-6 text-sm">
+<button id="theme-toggle" class="p-2 rounded-full border border-[#d0dbed] dark:border-slate-700 hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-300 transition-all duration-300 flex items-center justify-center focus:outline-none" aria-label="Toggle theme">
+    <span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
 <i class="fas fa-fingerprint"></i>
-<span class="">كود المسؤول</span>
-<span class="text-white font-mono bg-brand-card px-2 py-0.5 rounded border border-brand-border">11223344</span>
+<span class="hidden sm:inline">كود المسؤول</span>
+<span class="text-[#1a1a2e] dark:text-white font-mono bg-[#e6eeff] dark:bg-slate-800 px-2 py-0.5 rounded border border-[#d0dbed] dark:border-slate-700">11223344</span>
 </div>
 </div>
 </header>
 <!-- Main Scrollable Area -->
-<main class="flex-1 overflow-y-auto p-8 relative">
-<div class="max-w-6xl mx-auto space-y-8">
+<main class="flex-1 overflow-y-auto p-4 sm:p-8 relative">
+<div class="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+<!-- HOME SECTION -->
+<section id="section-home" class="page-section">
 <!-- Welcome Banner -->
-<section class="bg-brand-card rounded-custom p-8 border border-brand-border relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6" data-purpose="welcome-banner">
+<section class="bg-white dark:bg-[#051525] rounded-xl p-6 sm:p-8 border border-[#d0dbed] dark:border-slate-800 relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6" data-purpose="welcome-banner">
 <!-- Background decoration -->
-<div class="absolute inset-0 bg-gradient-to-r from-brand-primary/5 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#00236f]/5 dark:from-sky-400/5 to-transparent pointer-events-none"></div>
 <div class="relative z-10">
-<div class="flex items-center gap-2 text-brand-primary mb-2">
+<div class="flex items-center gap-2 text-[#00236f] dark:text-sky-400 mb-2">
 <i class="fas fa-chart-line text-sm"></i>
 <span class="text-xs font-semibold uppercase tracking-wider">لوحة الإشراف والإدارة</span>
 </div>
-<h2 class="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+<h2 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white mb-2 flex items-center gap-3">
               مرحباً بك، Admin <span class="text-2xl">👋</span>
 </h2>
-<p class="text-brand-muted text-sm max-w-xl">
+<p class="text-[#444651] dark:text-slate-400 text-sm max-w-xl">
               يمكنك من هنا إدارة المواد الدراسية، إضافة المحاضرات، وتعيين اشتراكات الطلاب بكل سهولة.
             </p>
 </div>
 <div class="relative z-10">
-<button class="bg-brand-primary hover:bg-blue-600 text-white font-medium py-2.5 px-6 rounded-custom flex items-center gap-2 transition-colors shadow-lg shadow-brand-primary/20">
+<button id="add-course-btn" class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-medium py-2.5 px-6 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
 <i class="fas fa-plus"></i>
               إضافة مادة جديدة
             </button>
 </div>
 </section>
 <!-- Stats Overview -->
-<section class="grid grid-cols-1 md:grid-cols-3 gap-6" data-purpose="statistics">
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" data-purpose="statistics">
 <!-- Stat Card 1 -->
-<div class="bg-brand-card rounded-custom p-6 border border-brand-border flex items-center justify-between hover:border-brand-primary/50 transition-colors">
+<div class="bg-white dark:bg-[#051525] rounded-xl p-4 sm:p-6 border border-[#d0dbed] dark:border-slate-800 flex items-center justify-between hover:border-[#00236f]/50 dark:hover:border-sky-400/50 transition-colors">
 <div>
-<p class="text-sm text-brand-muted mb-1">إجمالي المواد</p>
-<h3 class="text-3xl font-bold text-white">1</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400 mb-1">إجمالي المواد</p>
+<h3 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white">1</h3>
 </div>
-<div class="w-12 h-12 rounded-custom bg-blue-500/10 flex items-center justify-center text-brand-primary border border-blue-500/20">
-<i class="fas fa-book-open text-xl"></i>
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-[#00236f] dark:text-sky-400 border border-blue-500/20 dark:border-sky-400/20">
+<i class="fas fa-book-open text-lg sm:text-xl"></i>
 </div>
 </div>
 <!-- Stat Card 2 -->
-<div class="bg-brand-card rounded-custom p-6 border border-brand-border flex items-center justify-between hover:border-brand-primary/50 transition-colors">
+<div class="bg-white dark:bg-[#051525] rounded-xl p-4 sm:p-6 border border-[#d0dbed] dark:border-slate-800 flex items-center justify-between hover:border-[#00236f]/50 dark:hover:border-sky-400/50 transition-colors">
 <div>
-<p class="text-sm text-brand-muted mb-1">إجمالي المحاضرات</p>
-<h3 class="text-3xl font-bold text-white">1</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400 mb-1">إجمالي المحاضرات</p>
+<h3 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white">1</h3>
 </div>
-<div class="w-12 h-12 rounded-custom bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
-<i class="fas fa-video text-xl"></i>
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 dark:text-indigo-400 border border-indigo-500/20 dark:border-indigo-400/20">
+<i class="fas fa-video text-lg sm:text-xl"></i>
 </div>
 </div>
 <!-- Stat Card 3 -->
-<div class="bg-brand-card rounded-custom p-6 border border-brand-border flex items-center justify-between hover:border-brand-primary/50 transition-colors">
+<div class="bg-white dark:bg-[#051525] rounded-xl p-4 sm:p-6 border border-[#d0dbed] dark:border-slate-800 flex items-center justify-between hover:border-[#00236f]/50 dark:hover:border-sky-400/50 transition-colors">
 <div>
-<p class="text-sm text-brand-muted mb-1">إجمالي الطلاب المسجلين</p>
-<h3 class="text-3xl font-bold text-white">1</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400 mb-1">إجمالي الطلاب المسجلين</p>
+<h3 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white">1</h3>
 </div>
-<div class="w-12 h-12 rounded-custom bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20">
-<i class="fas fa-users text-xl"></i>
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 dark:text-purple-400 border border-purple-500/20 dark:border-purple-400/20">
+<i class="fas fa-users text-lg sm:text-xl"></i>
 </div>
 </div>
 </section>
 <!-- Recent Content Sections -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8" data-purpose="recent-content">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8" data-purpose="recent-content">
 <!-- Recent Courses -->
 <section>
 <div class="flex items-center justify-between mb-4">
-<h3 class="text-lg font-bold text-white flex items-center gap-2">
-<i class="fas fa-book text-brand-primary"></i>
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white flex items-center gap-2">
+<i class="fas fa-book text-[#00236f] dark:text-sky-400"></i>
                 أحدث المواد المضافة
               </h3>
 </div>
 <div class="space-y-4">
 <!-- Course Card -->
-<div class="bg-brand-card rounded-custom p-5 border border-brand-border hover:border-brand-primary/40 transition-all cursor-pointer group flex flex-col justify-between h-32 relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-l from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="bg-white dark:bg-[#051525] rounded-xl p-4 sm:p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all cursor-pointer group flex flex-col justify-between h-32 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-l from-[#00236f]/5 dark:from-sky-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <div class="flex justify-between items-start relative z-10">
 <div>
-<span class="inline-block px-2 py-1 bg-brand-primary/10 text-brand-primary text-xs rounded mb-2 font-medium">منصة</span>
-<h4 class="text-xl font-bold text-white group-hover:text-brand-primary transition-colors">الرياضيات</h4>
+<span class="inline-block px-2 py-1 bg-[#00236f]/10 dark:bg-sky-400/10 text-[#00236f] dark:text-sky-400 text-xs rounded mb-2 font-medium">منصة</span>
+<h4 class="text-lg sm:text-xl font-bold text-[#1a1a2e] dark:text-white group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors">الرياضيات</h4>
 </div>
-<div class="text-xs text-brand-muted flex items-center gap-1 bg-brand-darker px-2 py-1 rounded border border-brand-border">
+<div class="text-xs text-[#444651] dark:text-slate-400 flex items-center gap-1 bg-[#e6eeff] dark:bg-slate-800 px-2 py-1 rounded border border-[#d0dbed] dark:border-slate-700">
 <i class="fas fa-film"></i>
                     1 محاضرات
                   </div>
 </div>
-<div class="flex justify-between items-center text-sm text-brand-muted relative z-10">
+<div class="flex justify-between items-center text-sm text-[#444651] dark:text-slate-400 relative z-10">
 <span class="">دخول المادة وعرض المحاضرات</span>
-<i class="fas fa-arrow-left text-brand-primary group-hover:-translate-x-1 transition-transform"></i>
+<i class="fas fa-arrow-left text-[#00236f] dark:text-sky-400 group-hover:-translate-x-1 transition-transform"></i>
 </div>
 </div>
 </div>
@@ -233,39 +351,467 @@
 <!-- Recent Lectures -->
 <section>
 <div class="flex items-center justify-between mb-4">
-<h3 class="text-lg font-bold text-white flex items-center gap-2">
-<i class="fas fa-video text-indigo-400"></i>
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white flex items-center gap-2">
+<i class="fas fa-video text-indigo-500 dark:text-indigo-400"></i>
                 أحدث المحاضرات
               </h3>
-<a class="text-sm text-brand-primary hover:text-blue-400 font-medium flex items-center gap-1" href="#">
+<a class="text-sm text-[#00236f] dark:text-sky-400 hover:text-[#1a4070] dark:hover:text-sky-300 font-medium flex items-center gap-1" href="#">
                 عرض الكل <i class="fas fa-arrow-left text-xs"></i>
 </a>
 </div>
 <div class="space-y-4">
 <!-- Lecture Card -->
-<div class="bg-brand-card rounded-custom p-5 border border-brand-border hover:border-indigo-400/40 transition-all cursor-pointer group flex items-center justify-between">
+<div class="bg-white dark:bg-[#051525] rounded-xl p-4 sm:p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-indigo-400/40 transition-all cursor-pointer group flex items-center justify-between">
 <div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded bg-brand-darker border border-brand-border flex items-center justify-center text-brand-muted font-mono text-sm">
+<div class="w-10 h-10 rounded bg-[#e6eeff] dark:bg-slate-800 border border-[#d0dbed] dark:border-slate-700 flex items-center justify-center text-[#444651] dark:text-slate-400 font-mono text-sm">
                     #1
                   </div>
 <div>
-<h4 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-1">مقدمة وتأسيس</h4>
-<p class="text-xs text-brand-muted">الرياضيات</p>
+<h4 class="text-base font-bold text-[#1a1a2e] dark:text-white group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors mb-1">مقدمة وتأسيس</h4>
+<p class="text-xs text-[#444651] dark:text-slate-400">الرياضيات</p>
 </div>
 </div>
-<i class="fas fa-arrow-left text-brand-muted group-hover:text-indigo-400 group-hover:-translate-x-1 transition-all"></i>
+<i class="fas fa-arrow-left text-[#444651] dark:text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:-translate-x-1 transition-all"></i>
 </div>
 </div>
 </section>
 </div>
+</section>
+
+<!-- COURSES SECTION -->
+<section id="section-courses" class="page-section hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white flex items-center gap-3">
+<i class="fas fa-book text-[#00236f] dark:text-sky-400"></i>
+المواد الدراسية
+</h2>
+<button class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
+<i class="fas fa-plus"></i>
+إضافة مادة جديدة
+</button>
+</div>
+<!-- Courses Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+<!-- Course Card 1 -->
+<div class="bg-white dark:bg-[#051525] rounded-xl p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all cursor-pointer group">
+<div class="flex items-center justify-between mb-4">
+<span class="inline-block px-3 py-1 bg-[#00236f]/10 dark:bg-sky-400/10 text-[#00236f] dark:text-sky-400 text-xs rounded-full font-medium">منصة</span>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-400/10 text-red-500 transition-colors">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors mb-2">الرياضيات</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400">مادة الرياضيات للصف الثالث الثانوي</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-film"></i>
+<span>1 محاضرة</span>
+</div>
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-users"></i>
+<span>1 طالب</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-white dark:bg-[#051525] rounded-xl p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all cursor-pointer group">
+<div class="flex items-center justify-between mb-4">
+<span class="inline-block px-3 py-1 bg-[#006591]/10 dark:bg-sky-400/10 text-[#006591] dark:text-sky-400 text-xs rounded-full font-medium">منصة</span>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-400/10 text-red-500 transition-colors">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors mb-2">الفيزياء</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400">مادة الفيزياء للصف الثالث الثانوي</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-film"></i>
+<span>0 محاضرات</span>
+</div>
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-users"></i>
+<span>0 طالب</span>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="bg-white dark:bg-[#051525] rounded-xl p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all cursor-pointer group">
+<div class="flex items-center justify-between mb-4">
+<span class="inline-block px-3 py-1 bg-[#4059aa]/10 dark:bg-sky-400/10 text-[#4059aa] dark:text-sky-400 text-xs rounded-full font-medium">منصة</span>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-400/10 text-red-500 transition-colors">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white group-hover:text-[#00236f] dark:group-hover:text-sky-400 transition-colors mb-2">الكيمياء</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400">مادة الكيمياء للصف الثالث الثانوي</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-film"></i>
+<span>0 محاضرات</span>
+</div>
+<div class="flex items-center gap-2 text-[#444651] dark:text-slate-400">
+<i class="fas fa-users"></i>
+<span>0 طالب</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXAMS SECTION -->
+<section id="section-exams" class="page-section hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white flex items-center gap-3">
+<i class="fas fa-file-alt text-[#00236f] dark:text-sky-400"></i>
+الامتحانات والاختبارات
+</h2>
+<button class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
+<i class="fas fa-plus"></i>
+إنشاء اختبار جديد
+</button>
+</div>
+<!-- Exams List -->
+<div class="space-y-4">
+<div class="bg-white dark:bg-[#051525] rounded-xl p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400">
+<i class="fas fa-file-alt text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white">اختبار الرياضيات الأول</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400">الرياضيات • 10 أسئلة</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-green-100 dark:bg-green-400/10 text-green-600 dark:text-green-400 text-xs rounded-full font-medium">نشط</span>
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#051525] rounded-xl p-5 border border-[#d0dbed] dark:border-slate-800 hover:border-[#00236f]/40 dark:hover:border-sky-400/40 transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#006591]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#006591] dark:text-sky-400">
+<i class="fas fa-file-alt text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white">اختبار الفيزياء التجريبي</h3>
+<p class="text-sm text-[#444651] dark:text-slate-400">الفيزياء • 15 سؤال</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-400/10 text-yellow-600 dark:text-yellow-400 text-xs rounded-full font-medium">مسودة</span>
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STUDENTS SECTION -->
+<section id="section-students" class="page-section hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white flex items-center gap-3">
+<i class="fas fa-users text-[#00236f] dark:text-sky-400"></i>
+الطلاب
+</h2>
+<div class="flex gap-2">
+<button class="bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
+<i class="fas fa-plus"></i>
+إضافة طالب جديد
+</button>
+</div>
+</div>
+<!-- Students Table -->
+<div class="bg-white dark:bg-[#051525] rounded-xl border border-[#d0dbed] dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-[#e6eeff] dark:bg-slate-800">
+<tr>
+<th class="px-6 py-3 text-right text-xs font-semibold text-[#1a1a2e] dark:text-white uppercase tracking-wider">الطالب</th>
+<th class="px-6 py-3 text-right text-xs font-semibold text-[#1a1a2e] dark:text-white uppercase tracking-wider">الكود</th>
+<th class="px-6 py-3 text-right text-xs font-semibold text-[#1a1a2e] dark:text-white uppercase tracking-wider">المادة</th>
+<th class="px-6 py-3 text-right text-xs font-semibold text-[#1a1a2e] dark:text-white uppercase tracking-wider">الحالة</th>
+<th class="px-6 py-3 text-right text-xs font-semibold text-[#1a1a2e] dark:text-white uppercase tracking-wider">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#d0dbed] dark:divide-slate-800">
+<tr class="hover:bg-[#f0f4ff] dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400">
+<i class="fas fa-user"></i>
+</div>
+<div>
+<p class="font-medium text-[#1a1a2e] dark:text-white">أحمد محمد</p>
+<p class="text-sm text-[#444651] dark:text-slate-400">ahmed@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#444651] dark:text-slate-400 font-mono">12345678</td>
+<td class="px-6 py-4 text-sm text-[#444651] dark:text-slate-400">الرياضيات</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 dark:bg-green-400/10 text-green-600 dark:text-green-400 text-xs rounded-full font-medium">نشط</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-eye"></i>
+</button>
+<button class="p-2 rounded-lg hover:bg-[#e6eeff] dark:hover:bg-slate-800 text-[#444651] dark:text-slate-400 transition-colors">
+<i class="fas fa-edit"></i>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- ACCOUNT SECTION -->
+<section id="section-account" class="page-section hidden">
+<h2 class="text-2xl sm:text-3xl font-bold text-[#1a1a2e] dark:text-white flex items-center gap-3 mb-6">
+<i class="fas fa-cog text-[#00236f] dark:text-sky-400"></i>
+حسابي
+</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Profile Card -->
+<div class="bg-white dark:bg-[#051525] rounded-xl p-6 border border-[#d0dbed] dark:border-slate-800">
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white mb-4">معلومات الحساب</h3>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-20 h-20 rounded-full bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400 border-2 border-[#d0dbed] dark:border-slate-700">
+<i class="fas fa-user-shield text-3xl"></i>
+</div>
+<div>
+<h4 class="text-xl font-bold text-[#1a1a2e] dark:text-white">Admin</h4>
+<p class="text-sm text-[#444651] dark:text-slate-400">مسؤول النظام (معلم)</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-[#1a1a2e] dark:text-white mb-2">الاسم</label>
+<input type="text" value="Admin" class="w-full px-4 py-2 rounded-lg border border-[#d0dbed] dark:border-slate-700 bg-white dark:bg-slate-800 text-[#1a1a2e] dark:text-white focus:ring-2 focus:ring-[#00236f] dark:focus:ring-sky-400 focus:border-transparent transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-[#1a1a2e] dark:text-white mb-2">البريد الإلكتروني</label>
+<input type="email" value="admin@creativebrain.com" class="w-full px-4 py-2 rounded-lg border border-[#d0dbed] dark:border-slate-700 bg-white dark:bg-slate-800 text-[#1a1a2e] dark:text-white focus:ring-2 focus:ring-[#00236f] dark:focus:ring-sky-400 focus:border-transparent transition-colors">
+</div>
+<button class="w-full bg-[#2e5fa0] hover:bg-[#1a4070] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-medium py-2 rounded-lg transition-colors shadow-lg shadow-[#2e5fa0]/30 dark:shadow-sky-500/30">
+حفظ التغييرات
+</button>
+</div>
+</div>
+<!-- Settings Card -->
+<div class="bg-white dark:bg-[#051525] rounded-xl p-6 border border-[#d0dbed] dark:border-slate-800">
+<h3 class="text-lg font-bold text-[#1a1a2e] dark:text-white mb-4">الإعدادات</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-[#e6eeff] dark:bg-slate-800 rounded-lg">
+<div>
+<p class="font-medium text-[#1a1a2e] dark:text-white">الإشعارات</p>
+<p class="text-sm text-[#444651] dark:text-slate-400">تلقي إشعارات عن النشاط</p>
+</div>
+<button class="relative w-12 h-6 bg-[#00236f] dark:bg-sky-400 rounded-full transition-colors">
+<span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform transform translate-x-6"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-[#e6eeff] dark:bg-slate-800 rounded-lg">
+<div>
+<p class="font-medium text-[#1a1a2e] dark:text-white">الوضع الليلي</p>
+<p class="text-sm text-[#444651] dark:text-slate-400">تفعيل الوضع الليلي تلقائياً</p>
+</div>
+<button class="relative w-12 h-6 bg-[#d0dbed] dark:bg-slate-600 rounded-full transition-colors">
+<span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-[#e6eeff] dark:bg-slate-800 rounded-lg">
+<div>
+<p class="font-medium text-[#1a1a2e] dark:text-white">اللغة</p>
+<p class="text-sm text-[#444651] dark:text-slate-400">لغة الواجهة</p>
+</div>
+<select class="px-4 py-2 rounded-lg border border-[#d0dbed] dark:border-slate-700 bg-white dark:bg-slate-800 text-[#1a1a2e] dark:text-white focus:ring-2 focus:ring-[#00236f] dark:focus:ring-sky-400 focus:border-transparent transition-colors">
+<option>العربية</option>
+<option>English</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
 </div>
 </main>
 </div>
 <!-- END: Main Content Area -->
-<!-- Floating issue tracker matching screenshot bottom left -->
-<div class="fixed bottom-4 left-4 z-50">
-
+<!-- Floating Social Media Buttons -->
+<div class="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
+    <a id="whatsapp-link" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp text-[18px]"></i>
+    </a>
+    <a id="tiktok-link" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-[#000000] hover:bg-[#1a1a1a] text-white transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl" aria-label="TikTok">
+        <i class="fa-brands fa-tiktok text-[18px]"></i>
+    </a>
 </div>
 
 
+<!-- Theme Toggle Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleIcon = document.getElementById('theme-toggle-icon');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const logoutBtn = document.getElementById('logout-btn');
+    const addCourseBtn = document.getElementById('add-course-btn');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pageSections = document.querySelectorAll('.page-section');
+    const headerTitle = document.querySelector('header h2');
+
+    const updateIcon = (isDark) => {
+        if (themeToggleIcon) {
+            themeToggleIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    };
+
+    const isDark = document.documentElement.classList.contains('dark');
+    updateIcon(isDark);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            if (isCurrentlyDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateIcon(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateIcon(true);
+            }
+        });
+    }
+
+    // Mobile menu toggle
+    if (mobileMenuBtn && sidebar && sidebarBackdrop) {
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.remove('hidden');
+            sidebarBackdrop.classList.remove('hidden');
+        });
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                sidebar.classList.add('hidden');
+                sidebarBackdrop.classList.add('hidden');
+            });
+        }
+        
+        // Close sidebar when clicking backdrop
+        sidebarBackdrop.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+            sidebarBackdrop.classList.add('hidden');
+        });
+    }
+
+    // Navigation functionality
+    const sectionTitles = {
+        'home': 'الرئيسية',
+        'courses': 'المواد الدراسية',
+        'exams': 'الامتحانات والاختبارات',
+        'students': 'الطلاب',
+        'account': 'حسابي'
+    };
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = link.getAttribute('data-section');
+            
+            // Update active state in sidebar
+            navLinks.forEach(l => {
+                l.classList.remove('bg-[#00236f]/10', 'dark:bg-sky-400/10', 'text-[#00236f]', 'dark:text-sky-400', 'font-medium');
+                l.classList.add('text-[#444651]', 'dark:text-slate-400');
+            });
+            link.classList.add('bg-[#00236f]/10', 'dark:bg-sky-400/10', 'text-[#00236f]', 'dark:text-sky-400', 'font-medium');
+            link.classList.remove('text-[#444651]', 'dark:text-slate-400');
+            
+            // Show corresponding section
+            pageSections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            const targetSection = document.getElementById(`section-${section}`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+            
+            // Update header title
+            if (headerTitle && sectionTitles[section]) {
+                headerTitle.textContent = sectionTitles[section];
+            }
+            
+            // Close mobile menu after navigation
+            if (window.innerWidth < 768 && sidebarBackdrop) {
+                sidebar.classList.add('hidden');
+                sidebarBackdrop.classList.add('hidden');
+            }
+        });
+    });
+
+    // Logout functionality
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                window.location.href = 'index.html';
+            }
+        });
+    }
+
+    // Add course button functionality
+    if (addCourseBtn) {
+        addCourseBtn.addEventListener('click', () => {
+            alert('سيتم فتح نموذج إضافة مادة جديدة قريباً');
+        });
+    }
+
+    // Social links configuration
+    const whatsappLink = document.getElementById('whatsapp-link');
+    const tiktokLink = document.getElementById('tiktok-link');
+    
+    if (typeof socialLinks !== 'undefined') {
+        if (whatsappLink && socialLinks.whatsapp) {
+            whatsappLink.href = socialLinks.whatsapp;
+        }
+        if (tiktokLink && socialLinks.tiktok) {
+            tiktokLink.href = socialLinks.tiktok;
+        }
+    }
+});
+</script>
 </body></html>
