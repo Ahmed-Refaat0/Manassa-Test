@@ -136,6 +136,27 @@
             .hero-title { font-size: 26px !important; line-height: 34px !important; }
             .hero-badge { font-size: 10px !important; }
         }
+        /* Statistics cards entrance animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .stat-card {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .stat-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .stat-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
 <body class="bg-[#f0f4ff] dark:bg-[#020b13] min-h-screen flex flex-col antialiased text-[#1a1a2e] dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
@@ -197,6 +218,43 @@
         </div>
     </div>
 </section>
+
+<!-- ======== STATISTICS SECTION ======== -->
+<section class="w-full bg-[#f0f4ff] dark:bg-[#020b13] transition-colors duration-300">
+    <div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-8 sm:py-12">
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
+            <!-- Lectures Card -->
+            <div class="stat-card bg-white dark:bg-[#051525] border border-[#d0dbed] dark:border-slate-800 rounded-xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#00236f]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#00236f] dark:text-sky-400">
+                        <span class="material-symbols-outlined text-[28px] sm:text-[32px]">school</span>
+                    </div>
+                    <div id="lectures-count" class="text-[32px] sm:text-[40px] md:text-[48px] font-bold text-[#00236f] dark:text-sky-400 leading-none" data-target="60">
+                        +0
+                    </div>
+                    <p class="text-[14px] sm:text-[16px] font-medium text-[#444651] dark:text-slate-400">
+                        محاضرة
+                    </p>
+                </div>
+            </div>
+            <!-- Exams Card -->
+            <div class="stat-card bg-white dark:bg-[#051525] border border-[#d0dbed] dark:border-slate-800 rounded-xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#006591]/10 dark:bg-sky-400/10 flex items-center justify-center text-[#006591] dark:text-sky-400">
+                        <span class="material-symbols-outlined text-[28px] sm:text-[32px]">quiz</span>
+                    </div>
+                    <div id="exams-count" class="text-[32px] sm:text-[40px] md:text-[48px] font-bold text-[#006591] dark:text-sky-400 leading-none" data-target="20">
+                        +0
+                    </div>
+                    <p class="text-[14px] sm:text-[16px] font-medium text-[#444651] dark:text-slate-400">
+                        امتحان
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ======== FEATURES SECTION ======== -->
 <section class="w-full bg-[#e6eeff] dark:bg-[#051525]/50 transition-colors duration-300">
     <div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-10 sm:py-14 md:py-24">
@@ -251,7 +309,7 @@
                     </div>
                     <h3 class="font-headline-md text-[16px] sm:text-[18px] font-bold text-[#1a1a2e] dark:text-white">متابعة دقيقة للطلاب</h3>
                     <p class="font-body-sm text-[12px] sm:text-body-sm text-[#444651] dark:text-slate-400 leading-relaxed">
-                        لوحات تحكم متقدمة تتيح للمشرفين تتبع تقدم الطلاب وتفاعلهم مع المحتوى بدقة متناهية.
+                        تيم كامل يساعد الطلاب 
                     </p>
                 </div>
             </div>
@@ -316,6 +374,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateIcon(true);
             }
         });
+    }
+
+    // Number counting animation
+    const animateCount = (element, target, duration) => {
+        let start = 0;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+                element.textContent = '+' + target;
+                clearInterval(timer);
+            } else {
+                element.textContent = '+' + Math.floor(start);
+            }
+        }, 16);
+    };
+
+    const lecturesCount = document.getElementById('lectures-count');
+    const examsCount = document.getElementById('exams-count');
+
+    if (lecturesCount) {
+        setTimeout(() => {
+            const target = parseInt(lecturesCount.dataset.target);
+            animateCount(lecturesCount, target, 2000);
+        }, 300);
+    }
+
+    if (examsCount) {
+        setTimeout(() => {
+            const target = parseInt(examsCount.dataset.target);
+            animateCount(examsCount, target, 2000);
+        }, 500);
     }
 });
 </script>
